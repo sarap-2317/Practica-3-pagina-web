@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Ciberseguridad</title>
+</head>
+
+<body>
+    <header>
+        <h1>Plataforma de Ciberseguridad Institucional</h1>
+        <p>Reporte oficial de incidentes y amenazas digitales</p>
+    </header>
+    
+    <hr>
+
+    <!-- La etiqueta main le indica al navegador donde se encuentra el contenido específico,
+    todo lo que se repite en otras páginas (como el menú de navegación o el pie de página) -->
+    <main>
+
+        <!-- La etiqueta form es un contenedor interactivo, los elementos que estén dentro se convierten
+        en una unidad de información.
+        El atributo id da una identificación única.
+        El atributo autocomplete guarda lo que se escribe para tenerlo como sugerencia posteriormente -->
+        <form id="MiFormulario" autocomplete="off">
+
+            <!-- La etiqueta fieldset dibuja una caja alrededor de los elementos
+            La etiqueta legend le pone un título a la caja -->
+            <fieldset>
+
+                <legend>Datos de analista / Reportante</legend>
+
+                <!-- La etiqueta p es un elemento de tipo block
+                lo que hace es que cada etiqueta ocupe su propio espacio -->
+
+                <p>
+                    <!-- La etiqueta label describe qué debe ingresar el usuario
+                    El atributo for hace que el cursor salte automáticamente dentro del cuadro de texto -->
+                    <label for="analista_id">ID del analista</label>
+                    <br>
+
+                    <!-- La etiqueta input es un elemento de una sola etiqueta para entrada de datos.
+                    El atributo type define la naturaleza del dato.
+                    El atributo id identifica el elemento.
+                    El atributo name es el nombre del campo.
+                    El atributo pattern valida usando expresiones regulares (RegEx).
+                    El atributo placeholder muestra un texto guía.
+                    El atributo title explica cómo se debe escribir.
+                    El atributo required indica que el campo es obligatorio -->
+                    <input
+                        type="text"
+                        id="analista_id"
+                        name="analista_id"
+                        pattern="UAQFIF-[0-9]{3}"
+                        placeholder="UAQFIF-123"
+                        title="Debe iniciar con UAQFIF seguido de 3 números"
+                        required
+                    >
+                </p>
+
+                <p>
+                    <label for="telefono">Teléfono de Emergencia</label>
+                    <br>
+                    <input type="tel" id="telefono" name="telefono" placeholder="4423366520">
+                </p>
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Clasificación del evento</legend>
+
+                <p>
+                    <label for="sistema">Sistema o Activo afectado</label><br>
+
+                    <!-- La etiqueta select define una lista para recoger una opción -->
+                    <select name="sistema" id="sistema" required>
+
+                        <!-- La etiqueta option nos deja seleccionar una opción dentro de la lista -->
+                        <option value="">-- Seleccione un sistema --</option>
+
+                        <!-- El atributo value asigna el valor correspondiente a esa opción -->
+                        <option value="base_datos">Base de datos central</option>
+                        <option value="servidor_web">Servidor Web Juriquilla</option>
+                        <option value="wifi_admin">Red Wifi Administrativa</option>
+                        <option value="portal_calificaciones">Portal de calificaciones</option>
+                        <option value="wifi_alumnos">Red Wifi alumnos</option>
+
+                    </select>
+                </p>
+
+                <p>
+                    <label for="codigo_http">Código de estado del incidente (HTTP)</label>
+                    <br>
+
+                    <!-- El atributo list conecta el input con el datalist -->
+                    <input 
+                        list="codigos_http"
+                        id="codigo_http"
+                        name="codigo_http"
+                        placeholder="Ej: 404"
+                        required
+                    >
+
+                    <!-- La etiqueta datalist muestra una lista de opciones sugeridas -->
+                    <datalist id="codigos_http">
+                        <option value="400 - Bad Request (Sintaxis inválida)">
+                        <option value="401 - Unauthorized (Falta autenticación)">
+                        <option value="403 - Forbidden (Acceso denegado)">
+                        <option value="404 - Not Found (Recurso no encontrado)">
+                        <option value="408 - Request Timeout (Tiempo de espera agotado)">
+                        <option value="429 - Too Many Requests (Posible ataque DoS/Fuerza bruta)">
+                        <option value="500 - Internal Server Error (Fallo general del servidor)">
+                        <option value="502 - Bad Gateway (Fallo en la comunicación entre servidores)">
+                        <option value="503 - Service Unavailable (Servidor sobrecargado o en mantenimiento)">
+                        <option value="504 - Gateway Timeout (El servidor tardó demasiado en responder)">
+                    </datalist>
+
+                </p>
+
+                <p>
+                    <label for="url_phishing">URL Sospechosa (si aplica)</label><br>
+
+                    <!-- El atributo url permite escribir direcciones web -->
+                    <input 
+                        type="url" 
+                        id="url_phishing" 
+                        name="url_phishing"
+                        placeholder="https://sitio-malicioso.com"
+                    >
+                </p>
+
+                <p>
+                    <label for="fecha">Fecha y Hora del Hallazgo</label><br>
+
+                    <!-- El atributo date despliega un calendario -->
+                    <input type="date" id="fecha" name="fecha_dia" required>
+
+                    <!-- El atributo time despliega un reloj -->
+                    <input type="time" id="hora" name="fecha_hora" required>   
+                </p>
+
+                <p>
+                    <label>Prioridad de incidente</label><br>
+
+                    <input type="radio" id="p1" name="prioridad" value="critica">
+                    <label for="p1">Crítica</label><br>
+
+                    <input type="radio" id="p2" name="prioridad" value="alta">
+                    <label for="p2">Alta</label><br>
+
+                    <input type="radio" id="p3" name="prioridad" value="informativa">
+                    <label for="p3">Informativa</label>
+                </p>
+
+            </fieldset>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
