@@ -183,15 +183,17 @@
                 <p>
                     <!--con el number donde min indica el minimo y max el maximo de valores a agregar al recuadro-->
                     <label for="equipos">Numero de Equipos Comprometidos (1-100):</label>
+                    
                     <input type="number" id="equipos" name="equipos" min="1" max="100" value="1">
                 </p>
 
 
                 <p>
                     <label for="log">Adjunta Log de eventos (.log / .txt)</label>
-                    <br> <!-- file deja cargar o subir un archivo en este espacio
+                    <br> 
+                    <!-- file deja cargar o subir un archivo en este espacio
                     accept indica los tipos de archivos que se se aceptan en este caso txt-->
-                    <input type="fille" id="log" name="archivo_log" accept=".png, .txt">
+                    <input type="file" id="log" name="archivo_log" accept=".png, .txt">
                 </p>
 
 
