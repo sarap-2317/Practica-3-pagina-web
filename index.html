@@ -150,15 +150,119 @@
                     <label for="p2">Alta</label><br>
 
                     <input type="radio" id="p3" name="prioridad" value="informativa">
-                    <label for="p3">Informativa</label>
+                    <label for="p3">Informativa</label><br>
                 </p>
 
             </fieldset>
+
+            <fieldset>
+
+                 <legend>Activos comprometidos</legend>
+                 <p>Marque los elementos que presentan anomalias:</p>
+
+                  <p>
+                      <input type="checkbox" id="equipo_Final" name="activos" Value="endpoint">
+                      <label for="equipo_Final">Equipos de usualio (PC/Laptop)</label>
+                  </p>
+                  
+                  <p>
+                    <input type="checkbox" id="servidor" name="activos" value="server">
+                    <label for="servidor">Servidores de Aplicacion</label>
+                  </p>
+
+                  <P>
+                    <input type="checkbox" id="base_datos" name="activos" value="devices">
+                    <label for="base_datos">Dispositivos moviles</label>
+                  </P>
+
+            </fieldset>
+
+
+            <fieldset>
+                <legend>Evidencia y Respuesta Inicial</legend>
+                <p>
+                    <!--con el number donde min indica el minimo y max el maximo de valores a agregar al recuadro-->
+                    <label for="equipos">Numero de Equipos Comprometidos (1-100):</label>
+                    <input type="number" id="equipos" name="equipos" min="1" max="100" value="1">
+                </p>
+
+
+                <p>
+                    <label for="log">Adjunta Log de eventos (.log / .txt)</label>
+                    <br> <!-- file deja cargar o subir un archivo en este espacio
+                    accept indica los tipos de archivos que se se aceptan en este caso txt-->
+                    <input type="fille" id="log" name="archivo_log" accept=".png, .txt">
+                </p>
+
+
+                <p>
+                    <label for="comentarios">Describe la anomalia</label>
+                    <br>
+                    <textarea
+                          name="comentarios"
+                          id="comentarios"
+                          rows="4"
+                          cols="50"
+                          minlength="20"
+                          maxlength="50"
+                          placeholder="Minimo 20 caracteres sobre lo detectado"
+                        ></textarea>
+                </p>
+
+
+                <p>
+                    <label for="certeza">Nivel de certeza de la anomalia</label>
+                    <br> <!--range es pa q seleccione un valor numerico dentro del rango establecido
+                    step marca el incremento del valor
+                    oninput es para que este atento a lo que haga el usuario
+                    value controla que texto se muestra destro de la etiqueta-->
+                    <input type="range" id="certeza" name="certeza" nim="0" max="100"
+                        oninput="oninput_certeza.value = this.value + '%'">
+                     <output id="output_certeza">50%</output> 
+                </p>
+            
+            </fieldset>
+
+            <div style="margin-top: 30px; margin-bottom: 50px;">
+                <button type="button" onclick="confirmarEnvio()" style="padding: 10px 20px; cursor:pointer">
+                    Enviar Reporte al Centro de Analisis</button>
+
+                <button type="reset" style="padding: 10px 20px; cursor: pointer;">Borrar Todo</button>
+
+            </div>
 
         </form>
 
     </main>
 
+    <footer>
+        <p><strong>Avisos de privaciodad </strong>Tola la informacion enviada esta respaldad y protegida por los protocolo de la ley
+        general de proteccionde datos</p>
+        <p>Desarrollado como practica para la Materia de "Desarollo Web- 2026"</p>
+        <p>Toma agüita</p>
+    </footer>
+
 </body>
+
+   
+ <script>
+    function confirmarEnvio() { 
+        const form = document.getElementById('miFormulario');
+
+        //Validamos que los campos son obligatorios
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return
+        }
+    const respuesta = confirm("¿Estas seguro de enviar este reporte de accidente?");
+    if(respuesta){
+        alert("Reporte enviado exitosamente");
+        document.getElementById('miFormulario').reset();
+    }
+        
+    }
+ </script>
+
+
 
 </html>
